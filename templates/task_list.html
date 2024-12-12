@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Tasks</h2>
+<form method="POST">
+    <input type="text" name="user_id" placeholder="User ID" required>
+    <input type="text" name="title" placeholder="Task Title" required>
+    <button type="submit">Add Task</button>
+</form>
+<ul>
+    {% for task in tasks %}
+    <li>
+        <a href="/tasks/{{ task['_id'] }}">{{ task['title'] }}</a> - {{ "Completed" if task['completed'] else "Pending" }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

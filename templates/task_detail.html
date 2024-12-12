@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Task: {{ task['title'] }}</h2>
+<p>Status: {{ "Completed" if task['completed'] else "Pending" }}</p>
+<form method="POST">
+    <button type="submit">Mark as Completed</button>
+</form>
+<form method="DELETE">
+    <button type="submit">Delete Task</button>
+</form>
+{% endblock %}
