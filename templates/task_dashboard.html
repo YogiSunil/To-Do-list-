@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="sidebar">
+        <h3>{{ username }}</h3>
+    
+    <div class="settings">
+        <a href="{{ url_for('settings') }}">Settings</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+    <div class="tasks">
+        <h3>Your Tasks</h3>
+        <form method="POST" action="{{ url_for('add_task') }}">
+            <input type="text" name="title" placeholder="Enter Task Title" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <a href="{{ url_for('task_detail', task_id=task['_id']) }}">{{ task['title'] }}</a> 
+                    - {{ "Completed" if task['completed'] else "Pending" }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</div>
+{% endblock %}

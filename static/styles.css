@@ -1,0 +1,338 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Font Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+header nav a:hover {
+    background-color: #45a049;
+    border-radius: 5px;
+}
+
+/* Flash Messages */
+.flash-messages {
+    background-color: #ffcc00;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.flash-messages ul {
+    list-style-type: none;
+}
+
+.flash-messages li {
+    font-weight: bold;
+}
+
+/* Main Dashboard Layout */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* Tasks Section */
+.tasks {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tasks h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.tasks form {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.tasks input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    width: 75%;
+}
+
+.tasks button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tasks button:hover {
+    background-color: #45a049;
+}
+
+.tasks ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tasks li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.tasks li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Task Status Emojis */
+.tasks li .task-status {
+    font-size: 1.5em;
+    margin-left: 20px;
+}
+
+.tasks li .task-status.pending {
+    color: #FF5722;
+}
+
+.tasks li .task-status.completed {
+    color: #4CAF50;
+}
+
+/* Task Completed Button */
+button.complete-task {
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.complete-task:hover {
+    background-color: #f44336;
+}
+
+/* Settings Button */
+.settings a {
+    display: block;
+    background-color: #008CBA;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.settings a:hover {
+    background-color: #005f73;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.1em;
+    color: #777;
+}
+
+/* Flash Messages */
+.flash-messages {
+    background-color: #ffcc00;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.flash-messages ul {
+    list-style-type: none;
+}
+
+.flash-messages li {
+    font-weight: bold;
+}
+
+/* General Reset */
+
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc);
+    color: #333;
+    height: 100vh;
+   
+}
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+/* Container for Form */
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    font-size: 2.2em;
+    color: #2575fc;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #2575fc;
+}
+
+/* Submit Button */
+button {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Link to Toggle Forms */
+.toggle-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #2575fc;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.toggle-link:hover {
+    text-decoration: underline;
+}
+
+/* Icons for form */
+input[type="text"]::before, input[type="password"]::before {
+    content: "🔒";
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
+input[type="text"]:focus::before, input[type="password"]:focus::before {
+    color: #2575fc;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.1em;
+    color: #777;
+}
+
+/* Responsive Styling for Mobile */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    button {
+        font-size: 1.1em;
+    }
+}

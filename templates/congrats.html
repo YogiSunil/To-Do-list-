@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Congratulations!</h2>
+<p>You completed the task: {{ task['title'] }}.</p>
+<a href="{{ url_for('task_dashboard') }}">Go Back to Dashboard</a>
+{% endblock %}
