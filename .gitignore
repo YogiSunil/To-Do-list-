@@ -1,0 +1,27 @@
+# Ignore virtual environment directory
+venv/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore system files
+.DS_Store
+
+# Ignore environment variables and credentials (optional, if used)
+.env
+
+# Ignore log files
+*.log
+
+# Ignore coverage reports and other test artifacts
+*.coverage
+nosetests.xml
+coverage.xml
+*.cover
+
+# Ignore Flask and MongoDB temporary files (optional)
+*.db
+*.sqlite3
+instance/
