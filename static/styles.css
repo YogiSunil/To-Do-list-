@@ -211,8 +211,6 @@ footer {
     font-weight: bold;
 }
 
-/* General Reset */
-
 
 /* Body Styling */
 body {
@@ -222,13 +220,7 @@ body {
     height: 100vh;
    
 }
-.login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-}
-/* Container for Form */
+
 .container {
     background: rgba(255, 255, 255, 0.8);
     padding: 40px;
@@ -335,4 +327,106 @@ footer {
     button {
         font-size: 1.1em;
     }
+}
+/* Dashboard layout */
+.dashboard {
+    display: flex; /* Flexbox to align sidebar and tasks */
+    min-height: 100vh; /* Ensure full height of the screen */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;  /* Fixed width for sidebar */
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 2px solid #ddd;
+    position: fixed;  /* Sidebar stays fixed on the left */
+    top: 100;
+    bottom: 0;
+    left: 0;
+    height: 83vh;  /* Full height */
+}
+
+.sidebar h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.settings a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #333;
+}
+
+.settings a:hover {
+    color: #007BFF;
+}
+
+/* Tasks Section Styles */
+.tasks {
+    margin-left: 250px; /* Offset by the sidebar's width */
+    padding: 20px;
+    flex: 1; /* Takes remaining space */
+    overflow-y: auto; /* Scrollable if the content overflows */
+}
+
+.tasks h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.tasks form {
+    margin-bottom: 20px;
+}
+
+.tasks input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    width: 70%;
+}
+
+.tasks button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.tasks button:hover {
+    background-color: #0056b3;
+}
+
+.tasks ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tasks ul li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.tasks ul li.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.tasks ul li.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.tasks ul li a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.tasks ul li a:hover {
+    text-decoration: underline;
 }

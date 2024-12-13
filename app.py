@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from pymongo import MongoClient
 from werkzeug.security import generate_password_hash, check_password_hash
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Use a secret key for session management
@@ -56,13 +57,8 @@ def login():
             flash("User not found!")
             return redirect(url_for("login"))
 
-        # Check if the 'password' key exists
-        if "password" not in user:
-            flash("Error: No password found for this user.")
-            return redirect(url_for("login"))
-
         # Check if the password is correct
-        if not check_password_hash(user["password"], password):
+        if not check_password_hash(user.get("password"), password):
             flash("Incorrect password!")
             return redirect(url_for("login"))
 
@@ -95,37 +91,45 @@ def add_task():
     tasks_collection.insert_one(task_data)
     return redirect(url_for("task_dashboard"))
 
-
-@app.route("/tasks/<task_id>", methods=["GET", "POST", "DELETE"])
+@app.route("/tasks/<task_id>", methods=["GET", "POST"])
 def task_detail(task_id):
-    task = tasks_collection.find_one({"_id": task_id})
-    if request.method == "POST":
-        tasks_collection.update_one({"_id": task_id}, {"$set": {"completed": True}})
-        return redirect(url_for("congratulations", task_id=task_id))
-    elif request.method == "DELETE":
-        tasks_collection.delete_one({"_id": task_id})
+    task = tasks_collection.find_one({"_id": ObjectId(task_id)})
+    if not task:
+        flash("Task not found!")
         return redirect(url_for("task_dashboard"))
+
+    if request.method == "POST":
+        if request.form.get("_method") == "DELETE":
+            # Handle task deletion
+            tasks_collection.delete_one({"_id": ObjectId(task_id)})
+            flash("Task deleted successfully!")
+            return redirect(url_for("task_dashboard"))
+        
+        # Mark task as completed
+        tasks_collection.update_one({"_id": ObjectId(task_id)}, {"$set": {"completed": True}})
+        flash("Task marked as completed!")
+        return redirect(url_for("congratulations", task_id=task_id))
+    
     return render_template("task_detail.html", task=task)
 
 @app.route("/tasks/complete/<task_id>", methods=["POST"])
 def mark_task_completed(task_id):
     if "user_id" not in session:
         return redirect(url_for("login"))
-    
-    tasks_collection.update_one({"_id": task_id}, {"$set": {"completed": True}})
+    tasks_collection.update_one({"_id": ObjectId(task_id)}, {"$set": {"completed": True}})
     return redirect(url_for("task_dashboard"))
 
 @app.route("/tasks/completed/<task_id>")
 def congratulations(task_id):
-    task = tasks_collection.find_one({"_id": task_id})
+    task = tasks_collection.find_one({"_id": ObjectId(task_id)})
     return render_template("congrats.html", task=task)
 
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
     if "user_id" not in session:
         return redirect(url_for("login"))
-    
-    user = users_collection.find_one({"_id": session["user_id"]})
+
+    user = users_collection.find_one({"_id": ObjectId(session["user_id"])})
 
     if request.method == "POST":
         new_username = request.form["username"]
@@ -133,7 +137,7 @@ def settings():
         hashed_password = generate_password_hash(new_password)
 
         # Update username and password in the database
-        users_collection.update_one({"_id": session["user_id"]}, {
+        users_collection.update_one({"_id": ObjectId(session["user_id"])}, {
             "$set": {"username": new_username, "password": hashed_password}
         })
         

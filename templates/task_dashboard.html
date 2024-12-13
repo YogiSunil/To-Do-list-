@@ -2,29 +2,34 @@
 
 {% block content %}
 <div class="dashboard">
+    <!-- Sidebar Section -->
     <div class="sidebar">
         <h3>{{ username }}</h3>
-    
-    <div class="settings">
-        <a href="{{ url_for('settings') }}">Settings</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
+        <div class="settings">
+            <a href="{{ url_for('settings') }}">Settings</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
     </div>
-</div>
+
+    <!-- Tasks Section -->
     <div class="tasks">
         <h3>Your Tasks</h3>
+
+        <!-- Add Task Form -->
         <form method="POST" action="{{ url_for('add_task') }}">
             <input type="text" name="title" placeholder="Enter Task Title" required>
             <button type="submit">Add Task</button>
         </form>
+
+        <!-- Task List -->
         <ul>
             {% for task in tasks %}
-                <li>
-                    <a href="{{ url_for('task_detail', task_id=task['_id']) }}">{{ task['title'] }}</a> 
+                <li class="{{ 'completed' if task['completed'] else 'pending' }}">
+                    <a href="{{ url_for('task_detail', task_id=task['_id']) }}">{{ task['title'] }}</a>
                     - {{ "Completed" if task['completed'] else "Pending" }}
                 </li>
             {% endfor %}
         </ul>
     </div>
-    
 </div>
 {% endblock %}
